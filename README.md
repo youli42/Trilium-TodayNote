@@ -1,42 +1,44 @@
-# 📅 Today — 今日笔记
+# 📅 Today — Note Activity Viewer
 
-查看指定时间范围内的笔记动态
+> [中文版](README_CN.md) | [English](README.md)
+
+View note activity within a specified time range.
 
 ![alt text](file/Show.webp)
 
-## 使用方法
+## Usage
 
-### 1、手动导入
+### 1. Manual Import
 
-在 Trilium 中创建如下笔记结构：
+Create the following note structure in Trilium:
 
-1. 创建 `book` 类型笔记作为容器
-2. 在其下创建 `render` 类型笔记
-3. 添加 `~renderNote` 关系指向一个 `text/html` 模板笔记
-4. 在模板笔记下创建 `application/javascript;env=frontend` 子笔记
+1. Create a `book` type note as a container
+2. Create a `render` type note under it
+3. Add a `~renderNote` relation pointing to a `text/html` template note
+4. Create an `application/javascript;env=frontend` child note under the template
 
-打开 render 笔记即可看到带日期选择控件的动态页面。
+Open the render note to see the dynamic page with date picker controls.
 
-### 2、使用预发布包
+### 2. Using Pre-built Package
 
-下载 Releases 中提供的压缩包，在想要放置页面的为止右键导入，**关闭安全导入**，导入成功后可以看到编辑的笔记
+Download the archive from Releases, right-click and import at the desired location in the note tree, **disable safe import**. Once imported, you can edit the notes.
 
-## 技术特点
+## Features
 
-- **Render Note 架构**：不写插件，不改核心，纯 Trilium 内置机制实现
-- **零硬编码颜色**：全部继承 Trilium 主题变量，自动适配浅色/深色主题
-- **纯原生**：Vanilla JS + CSS，无外部依赖
-- **快速跳转**：点击笔记标题直接导航
+- **Render Note Architecture**: No plugins, no core modifications — pure Trilium built-in mechanism
+- **Zero Hardcoded Colors**: Inherits all Trilium theme variables, automatically adapts to light/dark themes
+- **Pure Native**: Vanilla JS + CSS, no external dependencies
+- **Quick Navigation**: Click note titles to jump directly
 
-## 结构
+## Structure
 
 ```
 today-node/
-├── rendering-template.html   # Render Note 的 HTML 模板（text/html）
-└── frontend-script.js        # Render Note 的前端脚本（application/javascript;env=frontend）
+├── rendering-template.html   # Render Note HTML template (text/html)
+└── frontend-script.js        # Render Note frontend script (application/javascript;env=frontend)
 ```
 
-## Trilium 中的组织方式
+## Organization in Trilium
 
 ```
 搜索脚本 (2GBKQLZRxO3j)
@@ -46,8 +48,8 @@ today-node/
             └── 渲染脚本 (7RqzWJHqTbls) — code (application/javascript;env=frontend)
 ```
 
-## 技术栈
+## Tech Stack
 
-- Trilium 后端 API: `api.searchForNotes()`, `api.runAsyncOnBackendWithManualTransactionHandling()`
-- Trilium 前端 API: `api.activateNote()`
-- 纯 CSS + Vanilla JS，无外部依赖
+- Trilium Backend API: `api.searchForNotes()`, `api.runAsyncOnBackendWithManualTransactionHandling()`
+- Trilium Frontend API: `api.activateNote()`
+- Pure CSS + Vanilla JS, no external dependencies
