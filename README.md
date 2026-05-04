@@ -1,6 +1,32 @@
-# 📅 动态笔记 — Trilium Render Note
+# 📅 Today — 今日笔记
 
-Trilium 渲染笔记脚本，用于按日期范围查询和展示当日创建的笔记。
+查看指定时间范围内的笔记动态
+
+![alt text](file/Show.webp)
+
+## 使用方法
+
+### 1、手动导入
+
+在 Trilium 中创建如下笔记结构：
+
+1. 创建 `book` 类型笔记作为容器
+2. 在其下创建 `render` 类型笔记
+3. 添加 `~renderNote` 关系指向一个 `text/html` 模板笔记
+4. 在模板笔记下创建 `application/javascript;env=frontend` 子笔记
+
+打开 render 笔记即可看到带日期选择控件的动态页面。
+
+### 2、使用预发布包
+
+下载 Releases 中提供的压缩包，在想要放置页面的为止右键导入，**关闭安全导入**，导入成功后可以看到编辑的笔记
+
+## 技术特点
+
+- **Render Note 架构**：不写插件，不改核心，纯 Trilium 内置机制实现
+- **零硬编码颜色**：全部继承 Trilium 主题变量，自动适配浅色/深色主题
+- **纯原生**：Vanilla JS + CSS，无外部依赖
+- **快速跳转**：点击笔记标题直接导航
 
 ## 结构
 
@@ -19,14 +45,6 @@ today-node/
         └── 渲染模板 (4S0E7Tr5yyAQ)  — code (text/html)
             └── 渲染脚本 (7RqzWJHqTbls) — code (application/javascript;env=frontend)
 ```
-
-## 功能
-
-- 按日期范围搜索创建的笔记（起始日 ~ 结束日）
-- 快捷按钮：今天 / 昨天 / 近 3 天 / 近 7 天 / 本周 / 本月
-- 结果按创建时间升序排列
-- 点击笔记标题跳转至对应笔记
-- 适配浅色/深色主题（颜色全部继承 Trilium 主题变量）
 
 ## 技术栈
 
