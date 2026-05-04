@@ -1,0 +1,169 @@
+<style>
+  #today-app {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 8px 0;
+    color: var(--main-text-color);
+  }
+  #today-app .header {
+    padding: 20px 24px 12px;
+    border-bottom: 1px solid rgba(128,128,128,0.15);
+    margin-bottom: 8px;
+  }
+  #today-app .header h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  #today-app .controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  #today-app .controls input[type="date"] {
+    font-size: 13px;
+    padding: 4px 8px;
+    border: 1px solid rgba(128,128,128,0.2);
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+  }
+  #today-app .controls button {
+    font-size: 12px;
+    padding: 4px 12px;
+    border: 1px solid rgba(128,128,128,0.2);
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  #today-app .controls button:hover {
+    background: rgba(128,128,128,0.08);
+  }
+  #today-app .controls .btn-primary {
+    background: rgba(128,128,128,0.1);
+    font-weight: 600;
+  }
+  #today-app .controls .btn-primary:hover {
+    background: rgba(128,128,128,0.2);
+  }
+  #today-app .shortcuts {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  #today-app .shortcuts button {
+    font-size: 12px;
+    padding: 3px 10px;
+    border: 1px solid rgba(128,128,128,0.15);
+    border-radius: 12px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-family: inherit;
+    opacity: 0.55;
+    transition: opacity 0.15s, background 0.15s;
+  }
+  #today-app .shortcuts button:hover {
+    opacity: 1;
+    background: rgba(128,128,128,0.08);
+  }
+  #today-app .shortcuts button.active {
+    opacity: 1;
+    background: rgba(128,128,128,0.12);
+    border-color: rgba(128,128,128,0.3);
+  }
+  #today-app .meta {
+    font-size: 13px;
+    opacity: 0.5;
+    margin-top: 8px;
+  }
+  #today-app .note-item {
+    display: flex;
+    align-items: center;
+    padding: 9px 24px;
+    gap: 14px;
+    border-radius: 6px;
+    margin: 1px 4px;
+    transition: background 0.15s;
+  }
+  #today-app .note-item:hover {
+    background: rgba(128,128,128,0.06);
+  }
+  #today-app .note-time {
+    font-size: 13px;
+    opacity: 0.45;
+    min-width: 88px;
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  #today-app .note-icon {
+    font-size: 15px;
+    width: 22px;
+    text-align: center;
+    flex-shrink: 0;
+    opacity: 0.6;
+  }
+  #today-app .note-link {
+    color: inherit;
+    text-decoration: none;
+    font-size: 14px;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 2px 0;
+    cursor: pointer;
+  }
+  #today-app .note-link:hover {
+    text-decoration: underline;
+  }
+  #today-app .empty-state {
+    text-align: center;
+    padding: 60px 24px;
+    opacity: 0.45;
+  }
+  #today-app .empty-state p {
+    margin: 8px 0 0;
+    font-size: 14px;
+  }
+  #today-app .empty-icon {
+    font-size: 36px;
+    opacity: 0.4;
+  }
+  #today-app .date-sep {
+    font-size: 13px;
+    opacity: 0.3;
+  }
+</style>
+
+<div id="today-app">
+  <div class="header">
+    <h1>📅 动态笔记</h1>
+    <div class="controls">
+      <input type="date" id="start-date">
+      <span class="date-sep">—</span>
+      <input type="date" id="end-date">
+      <button class="btn-primary" id="search-btn">查询</button>
+      <button id="refresh-btn">↻</button>
+    </div>
+    <div class="shortcuts" id="shortcuts">
+      <button data-preset="today">今天</button>
+      <button data-preset="yesterday">昨天</button>
+      <button data-preset="3d">近3天</button>
+      <button data-preset="7d">近7天</button>
+      <button data-preset="week">本周</button>
+      <button data-preset="month">本月</button>
+    </div>
+    <div class="meta" id="today-meta">加载中...</div>
+  </div>
+  <div id="today-list"></div>
+</div>
